@@ -1,6 +1,5 @@
 import streamlit as st
-# import numpy as np
-# import pydeck as pdk
+import pickle
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -115,3 +114,6 @@ def app():
     lr = LogisticRegression(multi_class="multinomial")
     lr.fit(x_train,y_train)
     lr.score(x_test,y_test)*100
+    # Save the model to a file
+    with open("model.pkl", "wb") as file:
+        pickle.dump(lr, file)
